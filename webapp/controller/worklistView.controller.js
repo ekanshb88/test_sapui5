@@ -7,6 +7,11 @@ function (Controller) {
     return Controller.extend("testproject.controller.worklistView", {
         onInit: function () {
 
+        },
+
+        onPress: function () {
+            var oText = this.byId("myText");
+            oText.setText("Button Pressed!");
         }
     });
 });
