@@ -45,4 +45,4 @@ jobs:
 
       - name: Deploy to Cloud Foundry
         run: |
-          cf deploy mta_archives/*.mtar --force
+          cf deploy /home/user/projects/testproject/mta_archives/testproject_0.0.1.mtar -f
