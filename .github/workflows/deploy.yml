@@ -34,10 +34,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install cf-cli
       
-      - name: Install CF MTA Plugin
-        run: |
-          cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
-          cf install-plugin cf-mta-plugin -f
+      # - name: Install CF MTA Plugin
+      #   run: |
+      #     cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
+      #     cf install-plugin cf-mta-plugin -f
 
       - name: Login to Cloud Foundry
         run: |
@@ -45,4 +45,4 @@ jobs:
 
       - name: Deploy to Cloud Foundry
         run: |
-          cf deploy mta_archives/*.mtar --force
+          mbt deploy -p mta_archives/*.mtar --platform=cf --target=cf --verbose
