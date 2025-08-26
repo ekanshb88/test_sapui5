@@ -21,6 +21,10 @@ jobs:
       - name: Install project dependencies
         run: npm install
 
+      # Check for console.logs
+      - name: Run ESLint to check for console.logs
+        run: npx eslint webapp/**/*.js
+
       - name: Install MTA Build Tool
         run: npm install -g mbt
 
