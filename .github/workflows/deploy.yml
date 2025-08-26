@@ -1,0 +1,41 @@
+name: Build & Deploy SAP UI5 App to BTP CF
+
+on:
+  push:
+    branches:
+      - main   # change if you deploy from a different branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install project dependencies
+        run: npm install
+
+      - name: Install MTA Build Tool
+        run: npm install -g mbt
+
+      - name: Build the MTA archive
+        run: mbt build -p cf -t mta_archives
+
+      - name: Install Cloud Foundry CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cf-cli
+
+      - name: Login to Cloud Foundry
+        run: |
+          cf login -a ${{ secrets.CF_API }} -u ${{ secrets.CF_USERNAME }} -p ${{ secrets.CF_PASSWORD }} -o ${{ secrets.CF_ORG }} -s ${{ secrets.CF_SPACE }}
+
+      - name: Deploy to Cloud Foundry
+        run: |
+          cf deploy mta_archives/*.mtar --force
