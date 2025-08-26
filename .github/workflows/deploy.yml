@@ -34,10 +34,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install cf-cli
       
-      # - name: Install CF MTA Plugin
-      #   run: |
-      #     cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
-      #     cf install-plugin cf-mta-plugin -f
+      - name: Install CF MultiApps Plugin
+        run: cf install-plugin -f https://github.com/cloudfoundry-incubator/multiapps-cli-plugin/releases/latest/download/multiapps-plugin.linux64
+
 
       - name: Login to Cloud Foundry
         run: |
