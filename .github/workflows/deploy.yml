@@ -29,8 +29,10 @@ jobs:
 
       - name: Install Cloud Foundry CLI
         run: |
+          curl -fsSL https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo gpg --dearmor -o /usr/share/keyrings/cloudfoundry-cli-archive-keyring.gpg
+          echo "deb [signed-by=/usr/share/keyrings/cloudfoundry-cli-archive-keyring.gpg] https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
           sudo apt-get update
-          sudo apt-get install -y cf-cli
+          sudo apt-get install cf-cli
 
       - name: Login to Cloud Foundry
         run: |
