@@ -3,8 +3,9 @@
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
         <content>
-            <Button id="idMyButton" text="Press Me" press=".onPress"/>
+            <Button id="idPressMeButton" text="Press Me" press=".onPress"/>
             <Text id="myText" text="Hello, SAP UI5!" />
+            <Button id="idWarningButton" text="Do NOT Press Me" press=".onDoNotPress"/>
         </content>
     </Page>
 </mvc:View>
