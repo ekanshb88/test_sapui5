@@ -3,6 +3,7 @@
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
         <content>
+            <Text id="myTitleText" text="Hello World" />
             <Button id="idPressMeButton" text="Press Me" press=".onPress"/>
             <Text id="myText" text="Hello, SAP UI5!" />
             <Button id="idWarningButton" text="Do NOT Press Me" press=".onDoNotPress"/>
